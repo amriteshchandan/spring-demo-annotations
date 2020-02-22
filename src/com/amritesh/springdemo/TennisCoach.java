@@ -8,13 +8,16 @@ public class TennisCoach implements Coach {
 
 	private FortuneService fortuneService;
 	
-	// Constructor Injection
-	@Autowired
-	TennisCoach(FortuneService fortuneService) {
-		System.out.println("[TennisCoach] constructor");
-		this.fortuneService = fortuneService;
+	TennisCoach() {
+		System.out.println("[TennisCoach] no-arg constructor");
 	}
 	
+	@Autowired
+	public void setFortuneService(FortuneService fortuneService) {
+		System.out.println("[TennisCoach] setFortuneService");
+		this.fortuneService = fortuneService;
+	}
+
 	@Override
 	public String getDailyWorkout() {
 		return "Practice your backhand volley.";
