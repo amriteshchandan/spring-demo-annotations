@@ -13,7 +13,7 @@ public class TennisCoach implements Coach {
 	}
 	
 	@Autowired
-	public void setFortuneService(FortuneService fortuneService) {
+	public void doCrazyStuff(FortuneService fortuneService) {
 		System.out.println("[TennisCoach] setFortuneService");
 		this.fortuneService = fortuneService;
 	}
