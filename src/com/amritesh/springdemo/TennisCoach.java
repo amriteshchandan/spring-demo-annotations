@@ -8,6 +8,7 @@ public class TennisCoach implements Coach {
 
 	private FortuneService fortuneService;
 	
+	// Constructor Injection
 	@Autowired
 	TennisCoach(FortuneService fortuneService) {
 		System.out.println("[TennisCoach] constructor");
