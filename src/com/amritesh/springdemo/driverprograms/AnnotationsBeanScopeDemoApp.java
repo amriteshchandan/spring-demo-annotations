@@ -14,6 +14,8 @@ public class AnnotationsBeanScopeDemoApp {
 		System.out.println(coach2);
 		System.out.println("Pointing to same object :: " + (coach1 == coach2));
 		context.close();
+		
+		
 	}
 
 }
