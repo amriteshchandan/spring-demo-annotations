@@ -6,20 +6,18 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class TennisCoach implements Coach {
-
-	@Autowired
-	@Qualifier("randomFortuneService")
+	
 	private FortuneService fortuneService;
 	
 	TennisCoach() {
 		System.out.println("[TennisCoach] no-arg constructor");
 	}
 	
-//	@Autowired
-//	public void setFortuneService(FortuneService fortuneService) {
-//		System.out.println("[TennisCoach] setFortuneService");
-//		this.fortuneService = fortuneService;
-//	}
+	@Autowired
+	TennisCoach(@Qualifier("randomFortuneService") FortuneService fortuneService) {
+		System.out.println("[TennisCoach] parameterized constructor");
+		this.fortuneService = fortuneService;
+	}
 
 	@Override
 	public String getDailyWorkout() {
