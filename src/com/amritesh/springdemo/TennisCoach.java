@@ -1,5 +1,8 @@
 package com.amritesh.springdemo;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
@@ -7,7 +10,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 @Component
-@Scope("prototype")
+@Scope("singleton")
 public class TennisCoach implements Coach {
 	
 	private FortuneService fortuneService;
@@ -24,6 +27,16 @@ public class TennisCoach implements Coach {
 	TennisCoach(@Qualifier("randomFortuneService") FortuneService fortuneService) {
 		System.out.println("[TennisCoach] parameterized constructor");
 		this.fortuneService = fortuneService;
+	}
+	
+	@PostConstruct
+	public void doMyStartUpStuff() {
+		System.out.println("[TennisCoach] doMyStartUpStuff");
+	}
+	
+	@PreDestroy
+	public void doMyCleanUpStuff() {
+		System.out.println("[TennisCoach] doMyCleanUpStuff");
 	}
 	
 	public String getEmailAddress() {
